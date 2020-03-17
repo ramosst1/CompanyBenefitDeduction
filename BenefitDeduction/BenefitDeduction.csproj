@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="EmployeeBenefitDeduction\Employees\DeductionDetailEmployee_old.cs" />
+    <Compile Remove="EmployeeBenefitDeduction\IBenefitDeductionDetailBase.cs" />
+    <Compile Remove="EmployeesSalary\Employees\ISalaryEmployee.cs" />
+    <Compile Remove="EmployeesSalary\Employees\ISalaryEmployeeRepository.cs" />
+    <Compile Remove="EmployeesSalary\Employees\SalaryEmployeeBase.cs" />
+    <Compile Remove="EmployeesSalary\Employees\SalaryEmployeeRepository.cs" />
+  </ItemGroup>
+
+</Project>
