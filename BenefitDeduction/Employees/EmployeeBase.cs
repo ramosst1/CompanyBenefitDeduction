@@ -6,7 +6,7 @@ namespace BenefitDeduction.Employees
 {
     public abstract class EmployeeBase : PersonBase, IEmployee
     {
-        public int EmployeeeId { get; internal set; }
+        public int EmployeeId { get; internal set; }
         public bool IsExempt { get; set; }
 
     }

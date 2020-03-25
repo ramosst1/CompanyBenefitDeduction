@@ -3,7 +3,7 @@ namespace BenefitDeduction.Employees
 {
     public interface IEmployee: IPerson
     {
-        int EmployeeeId { get;}
+        int EmployeeId { get;}
         bool IsExempt { get; }
     }
 }

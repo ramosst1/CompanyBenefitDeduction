@@ -77,7 +77,7 @@ namespace BenefitDeduction.Employees.FamilyMembers
                     }
                 );
 
-                return FamilyMemberList.Where(aItem => aItem.EmployeeId == _Employee.EmployeeeId).ToList();
+                return FamilyMemberList.Where(aItem => aItem.EmployeeId == _Employee.EmployeeId).ToList();
 
 
             } catch (Exception e) {

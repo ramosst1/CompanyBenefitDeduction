@@ -1,0 +1,17 @@
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\bin\Debug\netcoreapp2.1\BenefitDeductionAPI.deps.json
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\bin\Debug\netcoreapp2.1\BenefitDeductionAPI.runtimeconfig.json
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\bin\Debug\netcoreapp2.1\BenefitDeductionAPI.runtimeconfig.dev.json
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\bin\Debug\netcoreapp2.1\BenefitDeductionAPI.dll
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\obj\Debug\netcoreapp2.1\BenefitDeductionAPI.csprojAssemblyReference.cache
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\obj\Debug\netcoreapp2.1\BenefitDeductionAPI.csproj.CoreCompileInputs.cache
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\obj\Debug\netcoreapp2.1\BenefitDeductionAPI.RazorAssemblyInfo.cache
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\obj\Debug\netcoreapp2.1\BenefitDeductionAPI.RazorAssemblyInfo.cs
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\obj\Debug\netcoreapp2.1\BenefitDeductionAPI.AssemblyInfoInputs.cache
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\obj\Debug\netcoreapp2.1\BenefitDeductionAPI.AssemblyInfo.cs
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\obj\Debug\netcoreapp2.1\BenefitDeductionAPI.RazorTargetAssemblyInfo.cache
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\bin\Debug\netcoreapp2.1\BenefitDeductionAPI.pdb
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\obj\Debug\netcoreapp2.1\BenefitDeductionAPI.dll
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\obj\Debug\netcoreapp2.1\BenefitDeductionAPI.pdb
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\bin\Debug\netcoreapp2.1\BenefitDeduction.dll
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\bin\Debug\netcoreapp2.1\BenefitDeduction.pdb
+D:\ProjectsSampleCode\CompanyBenefitDeduction\BenefitDeductionAPI\obj\Debug\netcoreapp2.1\BenefitDeductionAPI.csproj.CopyComplete

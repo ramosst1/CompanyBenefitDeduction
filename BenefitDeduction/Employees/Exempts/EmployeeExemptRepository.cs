@@ -16,7 +16,7 @@ namespace BenefitDeduction.Employees.Exempts
 
                 var EmployeeList = GetEmployees();
 
-                return EmployeeList.FirstOrDefault(aItem => aItem.EmployeeeId == employeeId);
+                return EmployeeList.FirstOrDefault(aItem => aItem.EmployeeId == employeeId);
             }
             catch (Exception e) {
 
@@ -47,14 +47,14 @@ namespace BenefitDeduction.Employees.Exempts
             }
         }
 
-        private static List<IEmployee> GetEmployees() {
+        public List<IEmployee> GetEmployees() {
 
             var EmployeeList = new List<IEmployee>();
 
             EmployeeList
                 .Add(new Employee() {
                     IsExempt = true,
-                    EmployeeeId = 1,
+                    EmployeeId = 1,
                     FirstName = "John",
                     LastName = "Smith"
                     }
@@ -64,7 +64,7 @@ namespace BenefitDeduction.Employees.Exempts
                 .Add(new Employee()
                 {
                     IsExempt = true,
-                    EmployeeeId = 2,
+                    EmployeeId = 2,
                     FirstName = "Jill",
                     LastName = "Jackson"
                 }
@@ -74,7 +74,7 @@ namespace BenefitDeduction.Employees.Exempts
                 .Add(new Employee()
                 {
                     IsExempt = true,
-                    EmployeeeId = 3,
+                    EmployeeId = 3,
                     FirstName = "Hector",
                     LastName = "Daniel"
                 }
@@ -84,7 +84,7 @@ namespace BenefitDeduction.Employees.Exempts
                 .Add(new Employee()
                 {
                     IsExempt = true,
-                    EmployeeeId = 4,
+                    EmployeeId = 4,
                     FirstName = "James",
                     LastName = "Mankey"
                 }

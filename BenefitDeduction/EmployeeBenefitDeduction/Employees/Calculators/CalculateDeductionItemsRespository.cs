@@ -38,8 +38,8 @@ namespace BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators
             return new BenefitDeductionItem()
             {
                 NumberOfPayPeriod = _Salary.NumberOfPayPeriod,
-                EmployeeId = employee.EmployeeeId,
-                FamilyMemberId = employee.EmployeeeId,
+                EmployeeId = employee.EmployeeId,
+                FamilyMemberId = employee.EmployeeId,
                 FirstName = employee.FirstName,
                 MiddleName = employee.MiddleName,
                 IsEmployee = true,
@@ -65,7 +65,7 @@ namespace BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators
 
             return new BenefitDeductionItem()
             {
-                EmployeeId = _Employee.EmployeeeId,
+                EmployeeId = _Employee.EmployeeId,
                 FamilyMemberId = familyMember.FamilyMemberId,
                 FirstName = familyMember.FirstName,
                 MiddleName = familyMember.MiddleName,

@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BenefitDeduction", "Benefit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestBenefitDeduction", "UnitTestBenefitDeduction\UnitTestBenefitDeduction.csproj", "{A4CB42D5-130A-4BE6-9683-EE46A916BFB2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BenefitDeductionAPI", "BenefitDeductionAPI\BenefitDeductionAPI.csproj", "{9642BEBF-ABEA-4A66-9DC8-F6ECF17A126C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenefitDeductionWebApp", "BenefitDeductionWebApp\BenefitDeductionWebApp.csproj", "{A2C534A7-B193-4B68-9570-E63EFE436D91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{A4CB42D5-130A-4BE6-9683-EE46A916BFB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4CB42D5-130A-4BE6-9683-EE46A916BFB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4CB42D5-130A-4BE6-9683-EE46A916BFB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9642BEBF-ABEA-4A66-9DC8-F6ECF17A126C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9642BEBF-ABEA-4A66-9DC8-F6ECF17A126C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9642BEBF-ABEA-4A66-9DC8-F6ECF17A126C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9642BEBF-ABEA-4A66-9DC8-F6ECF17A126C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2C534A7-B193-4B68-9570-E63EFE436D91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2C534A7-B193-4B68-9570-E63EFE436D91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2C534A7-B193-4B68-9570-E63EFE436D91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2C534A7-B193-4B68-9570-E63EFE436D91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

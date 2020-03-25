@@ -19,7 +19,7 @@ namespace BenefitDeduction.EmployeesSalary.Employees
             try
             {
                 return GetSalaries(_Employee)
-                    .Where(aItem => aItem.EmployeeId == _Employee.EmployeeeId).FirstOrDefault();
+                    .Where(aItem => aItem.EmployeeId == _Employee.EmployeeId).FirstOrDefault();
 
             }
             catch (Exception e)
@@ -36,7 +36,7 @@ namespace BenefitDeduction.EmployeesSalary.Employees
 
             SalaryList.Add(new SalaryEmployeeExempt()
             {
-                EmployeeId = employee.EmployeeeId,
+                EmployeeId = employee.EmployeeId,
                 IsExemptEmployee = true,
                 NumberOfPayPeriod = 26,
                 GrossSalaryAnnual = 52000
