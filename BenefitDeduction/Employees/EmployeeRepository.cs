@@ -56,7 +56,7 @@ namespace BenefitDeduction.Employees
                 .Add(new Employee() {
                     IsExempt = true,
                     EmployeeId = 1,
-                    FirstName = "John",
+                    FirstName = "Andrew",
                     LastName = "Smith"
                     }
                 );
