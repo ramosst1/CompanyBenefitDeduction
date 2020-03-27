@@ -34,7 +34,7 @@ namespace BenefitDeduction.EmployeeBenefitDeduction.Employees
 
             _BenefitDeductionItems = _CalculatorEmployeeRepos.CalculateItems();
 
-            _CalculateDeductionDetailRespos = new CalculateDeductionDetailRespository(_BenefitDeductionItems);
+            _CalculateDeductionDetailRespos = new CalculateDeductionDetailRespository(_Salary,_BenefitDeductionItems);
 
 
         }

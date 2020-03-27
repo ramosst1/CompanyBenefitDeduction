@@ -4,10 +4,10 @@
     {
         int EmployeeId { get;}
         int NumberOfPayPeriod { get;}
-        double GrossSalaryAnnual { get;}
+        decimal GrossSalaryAnnual { get;}
         bool IsManager { get;}
         bool IsExemptEmployee { get;}
-        double GrossSalaryPerPayPeriod { get; }
+        decimal GrossSalaryPerPayPeriod { get; }
 
     }
 }

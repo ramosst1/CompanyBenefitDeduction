@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using BenefitDeduction.EmployeesSalary;
 
 namespace BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators
 {
     internal class CalculateDeductionDetailRespository : ICalculateDeductionDetailRespository
     {
         List<IBenefitDeductionItem> _BenefitDeductionItems;
-        public CalculateDeductionDetailRespository(List<IBenefitDeductionItem> benefitDeductionItem)
+        ISalary _Salary;
+        public CalculateDeductionDetailRespository(ISalary salary, List<IBenefitDeductionItem> benefitDeductionItem)
         {
+            _Salary = salary;
             _BenefitDeductionItems = benefitDeductionItem;
         }
 
@@ -21,30 +24,52 @@ namespace BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators
                 PerPayPeriodTotalCostGross = CalculatePerPayPeriodTotalCostGross(),
                 PerPayPeriodTotalCostNet = CalculatePerPayPeriodTotalCostNet(),
                 BenefitDeductionItems = _BenefitDeductionItems,
+                EmployeeSalary = _Salary.GrossSalaryAnnual,
             };
+
+            ABenefitDeductionDetail.AnnualSalaryAjustment = 
+                CalculateAnnualSalaryAjustment(ABenefitDeductionDetail);
+
+            ABenefitDeductionDetail.PerPayPeriodSalaryAjustment = 
+                CalculatePerPayPeriodSalaryAjustment(ABenefitDeductionDetail);
 
             return ABenefitDeductionDetail;
         }
 
         private decimal CalculateAnnualTotalCostGross() {
-            var Total = _BenefitDeductionItems.Select(aItem => aItem.AnnualCostGross).Sum();
-            return Math.Round(Total, 2, MidpointRounding.AwayFromZero);
+            var Total = _BenefitDeductionItems.Select(aItem => aItem.AnnualCostGross).Sum() + .00m;
+            return Math.Round(Total, 2);
         }
 
         private decimal CalculateAnnualTotalCostNet() {
-            var Total = _BenefitDeductionItems.Select(aItem => aItem.AnnualCostNet).Sum();
-            return Math.Round(Total, 2, MidpointRounding.AwayFromZero);
+            var Total = _BenefitDeductionItems.Select(aItem => aItem.AnnualCostNet).Sum() +.00m;
+            return Math.Round(Total, 2);
         }
 
         private decimal CalculatePerPayPeriodTotalCostGross() {
-            var Total = _BenefitDeductionItems.Select(aItem => aItem.PerPayPeriodCostGross).Sum();
-            return Math.Round(Total, 2, MidpointRounding.AwayFromZero);
+            var Total = _BenefitDeductionItems.Select(aItem => aItem.PerPayPeriodCostGross).Sum() + .00m;
+            return Math.Round(Total, 2);
         }
 
         private decimal CalculatePerPayPeriodTotalCostNet() {
-            var Total = _BenefitDeductionItems.Select(aItem => aItem.PerPayPeriodCostNet).Sum();
-            return Math.Round(Total, 2, MidpointRounding.AwayFromZero);
+            var Total = _BenefitDeductionItems.Select(aItem => aItem.PerPayPeriodCostNet).Sum() +.00m;
+            return Math.Round(Total, 2);
         }
+
+        private decimal CalculateAnnualSalaryAjustment(BenefitDeductionDetail benefitDeductionDetail) {
+
+            var Total = (_Salary.GrossSalaryAnnual - benefitDeductionDetail.AnnualTotalCostNet) + .00m;
+            return Math.Round(Total, 2);
+
+        }
+        private decimal CalculatePerPayPeriodSalaryAjustment(BenefitDeductionDetail benefitDeductionDetail)
+        {
+
+            var Total = (_Salary.GrossSalaryPerPayPeriod - benefitDeductionDetail.PerPayPeriodTotalCostNet) + .00m;
+            return Math.Round(Total, 2, MidpointRounding.AwayFromZero);
+
+        }
+
 
     }
 }

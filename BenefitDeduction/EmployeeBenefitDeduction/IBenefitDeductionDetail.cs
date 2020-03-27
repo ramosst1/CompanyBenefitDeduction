@@ -8,8 +8,13 @@ namespace BenefitDeduction.EmployeeBenefitDeduction
     {
         decimal AnnualTotalCostGross { get; }
         decimal AnnualTotalCostNet { get; }
+        decimal AnnualSalaryAjustment { get; }
+
         decimal PerPayPeriodTotalCostGross { get; }
         decimal PerPayPeriodTotalCostNet { get; }
+        decimal PerPayPeriodSalaryAjustment { get; }
+
+        decimal EmployeeSalary { get; }
 
         List<IBenefitDeductionItem> BenefitDeductionItems { get; }
 

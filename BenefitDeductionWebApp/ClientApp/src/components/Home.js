@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const Home = props => (
   <div>
-    <h1>Benefit Deduction website.</h1>
+    <h1>Benefit Deduction Website.</h1>
   </div>
 );
 

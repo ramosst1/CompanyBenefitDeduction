@@ -22,19 +22,19 @@ class FamilyMembers extends Component {
 
     render() {
         return (
-            <div className="root">
+            <div className="root" style={{ borderRadius: " 15px 15px 15px 15px"}}>
                 <strong>Employee Family Members:</strong> {this.props.employee.firstName} {this.props.employee.lastName}
                 <br/><br/>
 
 
-                <Grid container spacing={1}>
-                    <TableContainer component={Paper} >
+                <Grid container spacing={1} >
+                    <TableContainer component={Paper} className="root" style={{padding:0,  borderRadius: " 15px 15px 15px 15px" }}  >
                         
-                        <Table className="dataTable" aria-label="Family Members">
+                        <Table className="dataTable" aria-label="Family Members" >
                             <TableHead className="dataTableHeader"  >
                                 <TableRow className="dataTableHeader" >
-                                    <TableCell className="dataTableHeader"  style={{ width:"40%" }}>NAME</TableCell>
-                                    <TableCell className="dataTableHeader"  align="left" style={{ width: "20%" }}>RELATIONSHIP</TableCell>
+                                    <TableCell className="dataTableHeader"  style={{ width:"40%" }}>Name</TableCell>
+                                    <TableCell className="dataTableHeader"  align="left" style={{ width: "20%" }}>Relationship</TableCell>
                                     <TableCell className="dataTableHeader"  />
                                 </TableRow>
                             </TableHead>
@@ -71,6 +71,7 @@ class FamilyMembers extends Component {
                                 type="button"
                                 variant="contained"
                                 color="primary"
+                                style={{ borderRadius: 25 }}
                             >
                                 <CloseIcon />
                                 Close

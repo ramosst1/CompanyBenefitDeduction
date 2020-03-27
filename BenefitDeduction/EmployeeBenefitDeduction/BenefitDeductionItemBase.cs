@@ -25,7 +25,7 @@ namespace BenefitDeduction.EmployeeBenefitDeduction
         {
             get
             {
-                return AnnualDiscountPerentage == 0? 0 :  (AnnualCostGross / AnnualDiscountPerentage);
+                return AnnualDiscountPerentage == 0? 0 :  (AnnualCostGross / AnnualDiscountPerentage) + .00m;
             }
         }
         public decimal AnnualCostGross { get; internal set; } = 0;
@@ -33,18 +33,18 @@ namespace BenefitDeduction.EmployeeBenefitDeduction
         {
             get
             {
-                var Total = AnnualDiscountPerentage == 0? AnnualCostGross :(AnnualCostGross - AnnualDiscountPrice);
+                var Total = AnnualDiscountPerentage == 0? AnnualCostGross :(AnnualCostGross - AnnualDiscountPrice) + .00m;
                 return Math.Round(Total, 2);
             }
         }
         public decimal PerPayPeriodCostGross { get {
-                var Total = (AnnualCostGross / NumberOfPayPeriod);
+                var Total = (AnnualCostGross / NumberOfPayPeriod) + .00m;
                 return Math.Round(Total, 2);
             }
         }
         public decimal PerPayPeriodCostNet {
             get {
-                var Total = (AnnualCostNet / NumberOfPayPeriod);
+                var Total = (AnnualCostNet / NumberOfPayPeriod) + .00m;
                 return Math.Round(Total, 2);
             }
         }

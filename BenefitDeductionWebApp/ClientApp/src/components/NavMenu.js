@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
@@ -12,18 +13,41 @@ import {
 } from "react-router-dom";
 
 import './NavMenu.css';
+//import { color } from '@material-ui/system';
 
-export default props => (
-    <div className="rootNav">
+const useStyles = makeStyles(theme => ({
+    root: {
+        flexGrow: 1,
+    },
+    topNavIcon: {
+        margin: "0px 5px 0px 0px",
+        padding: 0,
+        color: "#21a631"
+    },
+    topNavButton: {
+        color: "#dbffe0",
+        padding: "0px 30px 0px 00px"
+    },
+    rootTitleNav: {
+        flexGrow: 1,
+    },
+}));
+
+
+export default function NavMenu() {
+
+    const classes = useStyles();
+    return (
+        <div className={classes.root}>
         <Router>
             <AppBar position="static" >
-            <Toolbar>
-                <Typography variant="h6" className="rootTitleNav">
-                        <Button href="/"  ><HomeIcon className="topNavIcon" />Home</Button>
-                        <Button href="/employees" className="topNavButton" ><PeopleIcon className="topNavIcon" />Employees</Button>
+                <Toolbar>
+                        <Typography className={classes.rootTitleNav}>
+                            <Button href="/" className={classes.topNavButton} ><HomeIcon className={classes.topNavIcon} />Home</Button>
+                            <Button href="/employees" className={classes.topNavButton} ><PeopleIcon className={classes.topNavIcon} />Employees</Button>
                     </Typography>
-                    <Button color="inherit" className="topNavButton" disabled>
-                        <PeopleOutlineIcon className="topNavIcon" />
+                        <Button color="inherit" className={classes.topNavButton} disabled>
+                            <PeopleOutlineIcon className={classes.topNavIcon} />
                         Sign In
                     </Button>
                 </Toolbar>
@@ -44,3 +68,5 @@ export default props => (
 
 
 );
+
+}

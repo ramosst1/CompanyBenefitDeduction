@@ -10,10 +10,10 @@ namespace BenefitDeductionAPI.Models.EmployeesSalary
 
         public int EmployeeId { get; set; }
         public int NumberOfPayPeriod { get; set; }
-        public double GrossSalaryAnnual { get; set; }
+        public decimal GrossSalaryAnnual { get; set; }
         public bool IsManager { get; set; } = false;
         public bool IsExemptEmployee { get; set; } = false;
-        public virtual double GrossSalaryPerPayPeriod { get; set; }
+        public virtual decimal GrossSalaryPerPayPeriod { get; set; }
 
     }
 }

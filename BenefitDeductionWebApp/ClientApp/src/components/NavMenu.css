@@ -1,5 +1,5 @@
 ﻿
-.rootNav {
+/*.rootNav {
     flex-grow: 1,
 }
 
@@ -10,7 +10,6 @@
 }
 
 .topNavButton {
-    color:red;
     color: #dbffe0;
     padding: 0px 30px 0px 00px
 }
@@ -18,5 +17,5 @@
 
 .rootTitleNav {
     flex-grow: 1;
-}
+}*/
 

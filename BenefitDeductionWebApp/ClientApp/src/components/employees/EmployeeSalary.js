@@ -25,47 +25,48 @@ class EmployeeSalary extends Component {
 
         return (
             <div className="root">
-                <Paper className="root" >
+                <Paper className="root" style={{ borderRadius: " 15px 15px 15px 15px" }}>
                     <strong>Employee Salary: </strong> {this.props.employee.firstName} {this.props.employee.lastName}
                     <br/><br/>
-                    <Grid container spacing={1}>
+                    <Grid container spacing={1} xs={12}>
                         <Grid item xs={4}>
                             <strong>
                                 Number of Pay Periods
                             </strong>
+                            &nbsp; {this.state.uxNumberOfPayPeriod}
+
                         </Grid>
-                        <Grid item xs={1} className="dataAlignRight">
-                            <div >
-                                {this.state.uxNumberOfPayPeriod}
-                            </div>
+                        <Grid item alignItems="right">
                         </Grid>
-                        <Grid item xs={7} />
-
-
-
-                        <Grid item xs={4}>
-                            <strong>
-                                Salary Per Pay Periods
+                        <Grid item xs={2} className="dataAlignRight" style={{ whiteSpace:"nowrap" }}>
+                            <strong >
+                                Per Pay Period
                             </strong>
                         </Grid>
-                        <Grid item xs={1} className="dataAlignRight">
+                        <Grid item xs={2} className="dataAlignRight">
+                            <strong >
+                                Annual
+                            </strong>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={1} xs={12}>
+                        <Grid item xs={4}>
+                            <strong>
+                                Salary
+                            </strong>
+                        </Grid>
+                        <Grid item xs={2} className="dataAlignRight">
                             <span>
                                 ${this.state.uxGrossSalaryPerPayPeriod}
                             </span>
                         </Grid>
-                        <Grid item xs={3}>
-                            <strong>
-                                Annual Salary
-                            </strong>
-                        </Grid>
-                        <Grid item xs={1} className="dataAlignRight">
+                        <Grid item xs={2} className="dataAlignRight">
                             <span>
                                 ${this.state.uxGrossSalaryAnnual}
                             </span>
                         </Grid>
-                        <Grid item xs={3} />
 
-                        </Grid>
+                    </Grid>
                 </Paper>
                 <Grid item xs={12} >
                     <div className="actionButtons">
@@ -74,6 +75,7 @@ class EmployeeSalary extends Component {
                             type="button"
                             variant="contained"
                             color="primary"
+                            style={{ borderRadius: 25 }}
                         >
                             <CloseIcon />
                             Close

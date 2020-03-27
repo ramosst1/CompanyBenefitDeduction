@@ -44,7 +44,7 @@ namespace BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators
                 MiddleName = employee.MiddleName,
                 IsEmployee = true,
                 LastName = employee.LastName,
-                AnnualCostGross = 1000,
+                AnnualCostGross = 1000.00m,
                 AnnualDiscountPerentage = CalculateDiscount(employee)
             };
         }
@@ -71,7 +71,7 @@ namespace BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators
                 MiddleName = familyMember.MiddleName,
                 LastName = familyMember.LastName,
                 NumberOfPayPeriod = _Salary.NumberOfPayPeriod,
-                AnnualCostGross = 500,
+                AnnualCostGross = 500.00m,
                 IsSpouse = familyMember.IsSpouse,
                 IsChild = familyMember.IsChild,
                 AnnualDiscountPerentage = CalculateDiscount(familyMember)
