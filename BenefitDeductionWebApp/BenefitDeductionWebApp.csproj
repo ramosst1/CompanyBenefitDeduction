@@ -39,6 +39,8 @@
     <None Remove="ClientApp\src\components\Counter.js" />
     <None Remove="ClientApp\src\components\FetchData.js" />
     <None Remove="ClientApp\src\components\FetchData.js" />
+    <None Remove="ClientApp\src\components\NavMenu - Copy.js" />
+    <None Remove="ClientApp\src\components\NavMenu - Copy.js" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

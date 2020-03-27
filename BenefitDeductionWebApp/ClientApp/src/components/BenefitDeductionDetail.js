@@ -1,5 +1,8 @@
 ﻿import React, { Component } from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
+import './BenefitDeductionDetail.css'
+import { Button, Grid, Paper } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
 class BenefitDeductionDetail extends Component {
 
@@ -43,95 +46,94 @@ class BenefitDeductionDetail extends Component {
 
 	render() {
         return (
-            <div style={{ backgroundColor:'whitesmoke' }}>
+            <div className="root">
+                <Paper style={{padding: 5}}>
+                    <strong>Benefit Deductions:</strong>
+                    <br /><br />
+                    <Grid container spacing={0} xs={12} style={{ padding: "0px 20px 0px 0px" }}>
+                        <Grid item xs={8} />
+                        <Grid item xs={2} style={{ textAlign: "right" }}>
+                            <strong>Per Pay Period</strong>
+                        </Grid>
+                        <Grid item xs={2} style={{ textAlign: "right" }}>
+                            <strong>Annually</strong>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={0} xs={12} style={{padding: "0px 20px 0px 0px"}}>
+                        <Grid item xs={7} />
+                        <Grid item xs={1} style={{ textAlign: "right" }} >
+                            Total Gross:
+                        </Grid>
+                        <Grid item xs={2} style={{ textAlign: "right" }}>
+                            ${this.state.perPayPeriodTotalCostGross}
+                        </Grid>
+                        <Grid item xs={2} style={{ textAlign: "right" }}>
+                            ${this.state.annualTotalCostGross}
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={0} xs={12} style={{ padding: "0px 20px 0px 0px" }}>
+                        <Grid item xs={7} />
+                        <Grid item xs={1} style={{ textAlign: "right" }}>
+                                Total Net:
+                        </Grid>
+                        <Grid item xs={2} style={{ textAlign: "right" }}>
+                            ${this.state.perPayPeriodTotalCostNet}
+                        </Grid>
+                        <Grid item xs={2} style={{ textAlign: "right" }}>
+                            ${this.state.annualTotalCostNet}
+                        </Grid>
 
-                <table className='table' style={{ padding: '0, 0, 0, 10', backgroundColor: 'whitesmoke'}}>
-                    <thead>
-                        <tr>
-                            <th>
-                            </th>
-                            <th style={{ textAlign: "right" }}>
-                                Per Pay Period
-                            </th>
-                            <th style={{ textAlign: "right" }}>
-                                Annually
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                    </Grid>
 
-                        <tr>
-                            <td>Total Gross:</td>
-                            <td style={{ textAlign: "right" }}>${this.state.perPayPeriodTotalCostGross}</td>
-                            <td style={{ textAlign: "right" }}>${this.state.annualTotalCostGross}</td>
-                        </tr>
-                        <tr>
-                            <td colSpan='3' style={{ padding:20}}>
-                                <table className='table' style={{ backgroundColor: 'whitesmoke', padding: '0, 0, 0, 10' }}>
-                                    <tr>
-                                        <th style={{ verticalAlign: "top" }}>Family Member</th>
-                                        <th style={{ textAlign: "right" }}># Pay <br />Periods</th>
-                                        <th style={{ textAlign: "right", verticalAlign:"top" }}>Discount</th>
-                                        <th style={{ textAlign: "right" }}>Pay Period <br/>Gross</th>
-                                        <th style={{ textAlign: "right" }}>Pay Period <br/>Net</th>
-                                        <th style={{ textAlign: "right" }}>Annual <br/>Gross</th>
-                                        <th style={{ textAlign: "right" }}>Annual <br/>Net</th>
-                                    </tr>
-                                {this.state.benefitDeductionItems.map(benefitDeductItem =>
-                                        <tr key={benefitDeductItem.familyMemberId} >
-                                            <td>
+                    <TableContainer style={{ padding: 0 }}>
+
+                        <Table aria-label="Benefit Deductions List" component={Paper} >
+                            <TableHead >
+                                <TableRow className="dataTableHeader" >
+                                        <TableCell >Family Member</TableCell>
+                                        <TableCell align="right" ># Pay Periods</TableCell>
+                                        <TableCell align="right">Discount</TableCell>
+                                        <TableCell align="right">Pay Period Gross</TableCell>
+                                        <TableCell align="right">Pay Period Net</TableCell>
+                                        <TableCell align="right">Annual Gross</TableCell>
+                                        <TableCell align="right">Annual Net</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {this.state.benefitDeductionItems.map(benefitDeductItem => (
+                                    <TableRow key={benefitDeductItem.familyMemberId}>
+                                        <TableCell component="th" scope="row" style={{ whiteSpace: "nowrap" }}>
                                                 {benefitDeductItem.firstName} {benefitDeductItem.lastName}
 
                                                 <span style={{ color: 'gray' }}>
-                                                    {benefitDeductItem.isSpouse? ' (spouse)' :'' }
+                                                    {benefitDeductItem.isSpouse ? ' (spouse)' : ''}
                                                     {benefitDeductItem.isChild ? ' (child)' : ''}
                                                 </span>
-                                            </td>
-                                            <td style={{ textAlign: "right" }}>
-                                                {benefitDeductItem.numberOfPayPeriod}
-                                            </td>
-                                            <td style={{ textAlign: "right" }}>
-                                                ${benefitDeductItem.annualDiscountPerentage}
-                                            </td>
-                                            <td style={{ textAlign: "right" }}>
-                                                ${benefitDeductItem.perPayPeriodCostGross}
-                                            </td>
-                                            <td style={{ textAlign: "right" }}>
-                                                ${benefitDeductItem.perPayPeriodCostNet}
-                                            </td>
+                                            </TableCell>
+                                        <TableCell align="right">{benefitDeductItem.numberOfPayPeriod}</TableCell>
+                                        <TableCell align="right">{benefitDeductItem.annualDiscountPerentage}%</TableCell>
+                                        <TableCell align="right">${benefitDeductItem.perPayPeriodCostGross}</TableCell>
+                                        <TableCell align="right">${benefitDeductItem.perPayPeriodCostNet}</TableCell>
+                                        <TableCell align="right">${benefitDeductItem.annualCostGross}</TableCell>
+                                        <TableCell align="right">${benefitDeductItem.annualCostNet}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
 
-                                            <td style={{ textAlign: "right" }}>
-                                                ${benefitDeductItem.annualCostGross}
-                                            </td>
-                                            <td style={{ textAlign: "right" }}>
-                                                ${benefitDeductItem.annualCostNet}
-                                            </td>
-
-
-                                    </tr>
-
-                                )}
-                                </table>
-
-                            </td>
-                        </tr>
- 
-                        <tr>
-                            <td>Total Net:</td>
-                            <td style={{ textAlign:"right" }}>${this.state.perPayPeriodTotalCostNet}</td>
-                            <td style={{ textAlign: "right" }}>${this.state.annualTotalCostNet}</td>
-                        </tr>
-                    </tbody>
-
-                </table>
-
+                    </TableContainer>
+                    <br/>
+                </Paper>
                 <div style={{ textAlign: "center", padding: 10 }}>
-                    <button
+                    <Button
                         onClick={this.props.onCancel}
                         type="button"
+                        variant="contained"
+                        color="primary"
                     >
+                        <CloseIcon />
                         Close
-                    </button>
+                    </Button>
                 </div>
 
             </div>

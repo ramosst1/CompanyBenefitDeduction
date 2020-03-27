@@ -1,16 +1,11 @@
 import React from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
+import { Grid } from '@material-ui/core';
 import NavMenu from './NavMenu';
 
 export default props => (
-  <Grid fluid>
-    <Row>
-      <Col sm={2}>
+    <Grid container>
+      <Grid item xs={12}>
         <NavMenu />
-      </Col>
-      <Col sm={9}>
-        {props.children}
-      </Col>
-    </Row>
+      </Grid>
   </Grid>
 );

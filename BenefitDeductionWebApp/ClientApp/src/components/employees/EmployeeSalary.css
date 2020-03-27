@@ -1,0 +1,16 @@
+﻿
+.root {
+    background-color: whitesmoke;
+    padding: 10px;
+    padding-top: 20px;
+}
+
+.actionButtons {
+    text-align:center;
+    align-content:center;
+    padding-top: 20px;
+}
+
+.dataAlignRight {
+    text-align: right;
+}
