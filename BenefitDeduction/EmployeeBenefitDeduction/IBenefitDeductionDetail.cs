@@ -11,7 +11,10 @@ namespace BenefitDeduction.EmployeeBenefitDeduction
         decimal AnnualSalaryAjustment { get; }
 
         decimal PerPayPeriodTotalCostGross { get; }
+        decimal PerPayPeriodTotalCostGrossGrandTotal { get; }
+
         decimal PerPayPeriodTotalCostNet { get; }
+        decimal PerPayPeriodTotalCostNetGrandTotal { get; }
         decimal PerPayPeriodSalaryAjustment { get; }
 
         decimal EmployeeSalary { get; }
