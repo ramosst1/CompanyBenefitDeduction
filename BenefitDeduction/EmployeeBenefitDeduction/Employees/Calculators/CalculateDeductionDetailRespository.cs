@@ -25,6 +25,7 @@ namespace BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators
                 PerPayPeriodTotalCostNet = CalculatePerPayPeriodTotalCostNet(),
                 BenefitDeductionItems = _BenefitDeductionItems,
                 EmployeeSalary = _Salary.GrossSalaryAnnual,
+                EmployeeSalaryPerPayPeriod = _Salary.GrossSalaryPerPayPeriod
             };
 
             ABenefitDeductionDetail.AnnualSalaryAjustment = 
@@ -32,6 +33,9 @@ namespace BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators
 
             ABenefitDeductionDetail.PerPayPeriodSalaryAjustment = 
                 CalculatePerPayPeriodSalaryAjustment(ABenefitDeductionDetail);
+
+            ABenefitDeductionDetail.PerPayPeriodBenefitAjustment =
+                CalculatePerPayPeriodBenefitAjustment(ABenefitDeductionDetail);
 
             return ABenefitDeductionDetail;
         }
@@ -70,6 +74,22 @@ namespace BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators
 
         }
 
+        private decimal CalculatePerPayPeriodBenefitAjustment(BenefitDeductionDetail benefitDeductionDetail)
+        {
+
+            if (benefitDeductionDetail.PerPayPeriodTotalCostGross == benefitDeductionDetail.PerPayPeriodTotalCostNet) {
+
+                return benefitDeductionDetail.PerPayPeriodTotalCostGross;
+            }
+
+            return benefitDeductionDetail.PerPayPeriodTotalCostNet;
+
+            //(${
+            //    this.state.perPayPeriodTotalCostGross === this.state.perPayPeriodTotalCostNet ? this.state.perPayPeriodTotalCostGross :
+            //     this.state.perPayPeriodTotalCostNet
+                                                //})
+
+        }
 
     }
 }

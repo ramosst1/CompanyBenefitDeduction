@@ -44,8 +44,10 @@ class BenefitDeductionDetail extends Component {
             perPayPeriodTotalCostGross: .00,
             perPayPeriodTotalCostNet: .00,
             perPayPeriodSalaryAjustment: .00,
+            perPayPeriodBenefitAjustment: .00,
             expandDetailChanged: true,
             employeeSalary: .00,
+            employeeSalaryPerPayPeriod: .00,
             benefitDeductionItems: []
 
         };
@@ -167,23 +169,30 @@ class BenefitDeductionDetail extends Component {
                                     <TableHead >
                                         <TableRow className="dataTableHeader" >
                                             <TableCell ></TableCell>
-                                            <TableCell align="right" >Pay Period Gross</TableCell>
-                                            <TableCell align="right" >Discount Adjustment</TableCell>
-                                            <TableCell align="right" >Annual Gross</TableCell>
-                                            <TableCell align="right" >Annual Total</TableCell>
+                                            <TableCell align="right" >Annual <br/>Deductions</TableCell>
+                                        <TableCell align="right" >Pay Period <br />Deduction</TableCell>
+                                        <TableCell align="right" >Paid Period <br />Discount Adjustment</TableCell>
+                                        <TableCell align="right" >Pay Period <br />Total</TableCell>
+                                        <TableCell align="right" >Annual <br />Total</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody >
-                                    <TableRow style={{ backgroundColor: "#f6f6f6de" }}>
-                                        <TableCell colSpan="4" >
-                                                <strong>Salary Adjustments</strong>
+                                        <TableRow style={{ backgroundColor: "#f6f6f6de" }}>
+                                            <TableCell colSpan="4">
+                                                <strong>Salary</strong>
                                             </TableCell>
                                             <TableCell align="right">
-                                                ${this.state.employeeSalary}
-                                            </TableCell>
-                                        </TableRow>
+                                                ${this.state.employeeSalaryPerPayPeriod}
+                                            </TableCell >
+                                            <TableCell align="right">
+                                                    ${this.state.employeeSalary}
+                                                </TableCell>
+                                            </TableRow>
                                         <TableRow style={{ backgroundColor: "#f6f6f6de" }}>
                                             <TableCell xs={6} ><strong>Benefit Deductions</strong></TableCell>
+                                        <TableCell align="right" >
+                                            ${this.state.annualTotalCostGross}
+                                        </TableCell>
                                             <TableCell align="right" >
                                                 ${this.state.perPayPeriodTotalCostGross}
                                             </TableCell>
@@ -192,15 +201,19 @@ class BenefitDeductionDetail extends Component {
                                                     "$" + this.state.perPayPeriodTotalCostNet
                                                 }
                                             </TableCell>
-                                            <TableCell align="right" >
-                                                ${this.state.annualTotalCostGross}
+                                            <TableCell align="right"  >
+                                                (${this.state.perPayPeriodBenefitAjustment})
                                             </TableCell>
                                             <TableCell align="right">
-                                                ${this.state.annualTotalCostNet}
+                                                (${this.state.annualTotalCostNet})
                                             </TableCell>
                                         </TableRow>
                                         <TableRow style={{ backgroundColor: "#f6f6f6de" }}>
-                                            <TableCell colSpan="4"><strong>Grand Total</strong></TableCell>
+                                            <TableCell colSpan="3"><strong>Grand Total</strong></TableCell>
+                                            <TableCell />
+                                        <TableCell align="right">
+                                            ${this.state.perPayPeriodSalaryAjustment}
+                                        </TableCell>
                                             <TableCell align="right">
                                                 ${this.state.annualSalaryAjustment}
                                             </TableCell>
@@ -277,8 +290,10 @@ class BenefitDeductionDetail extends Component {
                     perPayPeriodTotalCostGross: benefitDeductionList.perPayPeriodTotalCostGross,
                     perPayPeriodTotalCostNet: benefitDeductionList.perPayPeriodTotalCostNet,
                     perPayPeriodSalaryAjustment: benefitDeductionList.perPayPeriodSalaryAjustment,
+                    perPayPeriodBenefitAjustment: benefitDeductionList.perPayPeriodBenefitAjustment,
                     benefitDeductionItems: benefitDeductionList.benefitDeductionItems,
-                    employeeSalary: benefitDeductionList.employeeSalary
+                    employeeSalary: benefitDeductionList.employeeSalary,
+                    employeeSalaryPerPayPeriod: benefitDeductionList.employeeSalaryPerPayPeriod
                 });
             });
     }

@@ -16,7 +16,10 @@ namespace BenefitDeductionAPI.Models.EmployeeBenefitDeduction
         public decimal PerPayPeriodTotalCostNet { get; set; }
         public decimal PerPayPeriodSalaryAjustment { get; set; }
 
+        public decimal PerPayPeriodBenefitAjustment { get; set; }
+
         public decimal EmployeeSalary { get; set; }
+        public decimal EmployeeSalaryPerPayPeriod { get; set; }
 
         public List<BenefitDeductionItemDto> BenefitDeductionItems { get; set; }
             = new List<BenefitDeductionItemDto>();
