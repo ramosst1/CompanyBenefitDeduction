@@ -2,46 +2,36 @@
 using BenefitDeduction.Employees;
 using BenefitDeduction.Employees.FamilyMembers;
 using BenefitDeduction.EmployeesSalary;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BenefitDeduction.EmployeeBenefitDeduction.Employees
 {
     public class DeductionEmployeeRepository : IDeductionEmployeeRepository
     {
 
-        IEmployee _Employee;
-        List<IFamilyMember> _FamilyMembers;
-        ISalary _Salary;
-
-        ICalculateDeductionItemsRespository _CalculatorEmployeeRepos;
+        ICalculateDeductionItemsRespository _CalculateDeductionItemsRespos;
         ICalculateDeductionDetailRespository _CalculateDeductionDetailRespos;
+
         List <IBenefitDeductionItem> _BenefitDeductionItems;
 
         public DeductionEmployeeRepository(
+            ICalculateDeductionItemsRespository calculateDeductionItemsRespos, 
+            ICalculateDeductionDetailRespository calculateDeductionDetailRespos
+        )
+        {
+            _CalculateDeductionItemsRespos = calculateDeductionItemsRespos;
+            _CalculateDeductionDetailRespos = calculateDeductionDetailRespos;
+        }
+
+        public IBenefitDeductionDetail CalculateBenefitDeductionDetail(            
             IEmployee employee, 
             List<IFamilyMember> familyMembers,
             ISalary salary
-            
-        )
-        {
-            _Employee = employee;
-            _FamilyMembers = familyMembers;
-            _Salary = salary;
+        ) {
 
-            _CalculatorEmployeeRepos = new CalculateDeductionItemsRespository(_Employee, _FamilyMembers, _Salary);
+            _BenefitDeductionItems = _CalculateDeductionItemsRespos.CalculateItems(employee, familyMembers, salary);
 
-            _BenefitDeductionItems = _CalculatorEmployeeRepos.CalculateItems();
-
-            _CalculateDeductionDetailRespos = new CalculateDeductionDetailRespository(_Salary,_BenefitDeductionItems);
-
-
-        }
-
-        public IBenefitDeductionDetail CalculateBenefitDeductionDetail() {
-
-           var ABenefitDeductiondetail = _CalculateDeductionDetailRespos.CalculateDeductionDetail();
+           var ABenefitDeductiondetail = _CalculateDeductionDetailRespos.CalculateDeductionDetail(salary,_BenefitDeductionItems);
 
             return ABenefitDeductiondetail;
         }

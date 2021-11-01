@@ -8,13 +8,11 @@ namespace BenefitDeduction.EmployeesSalary
 {
     public class SalaryRepository : ISalaryRepository
     {
-        IEmployee _Employee;
-        public SalaryRepository(IEmployee employee)
+        public SalaryRepository()
         {
-            _Employee = employee;
         }
 
-        public ISalary GetSalary() {
+        public ISalary GetSalary(IEmployee employee) {
 
 
             try
@@ -22,12 +20,13 @@ namespace BenefitDeduction.EmployeesSalary
 
                 ISalaryRepository SalaryEmployeeRepos = null;
 
-                if(_Employee.IsExempt == true)
+                if(employee.IsExempt == true)
                 {
-                    SalaryEmployeeRepos = new SalaryEmployeeExemptRepository(_Employee);
+                    SalaryEmployeeRepos = new SalaryEmployeeExemptRepository(employee);
+//                    SalaryEmployeeRepos = new SalaryEmployeeExemptRepository();
                 }
 
-                return SalaryEmployeeRepos?.GetSalary();
+                return SalaryEmployeeRepos?.GetSalary(employee);
 
 
             }

@@ -7,7 +7,7 @@ namespace BenefitDeduction.Employees.FamilyMembers
     public interface IFamilyMemberRepository
     {
 
-        List<IFamilyMember> GetFamilyMembers();
+        List<IFamilyMember> GetFamilyMembers(IEmployee employee);
 
     }
 }

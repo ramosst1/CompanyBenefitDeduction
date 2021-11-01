@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators
 {
-    internal abstract class DiscountCalculatorRepository: IDiscountCalculatorRepository
+    public abstract class DiscountCalculatorRepository: IDiscountCalculatorRepository
     {
         public virtual int CalculateDiscount(IEmployee employee) {
 

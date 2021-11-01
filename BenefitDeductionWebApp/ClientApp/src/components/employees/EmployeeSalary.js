@@ -10,7 +10,7 @@ class EmployeeSalary extends Component {
 
         super(props);
         this.state = {
-            employee: this.props.employee,
+            employee: this.props?.employee,
             uxNumberOfPayPeriod: 0,
             uxGrossSalaryAnnual: 0,
             uxGrossSalaryPerPayPeriod: 0
@@ -23,10 +23,13 @@ class EmployeeSalary extends Component {
 
     render() {
 
+        const { firstName, lastName } = this.props.employee;
+
         return (
+
             <div className="root">
                 <Paper className="root" style={{ borderRadius: " 15px 15px 15px 15px" }}>
-                    <strong>Employee Salary: </strong> {this.props.employee.firstName} {this.props.employee.lastName}
+                    <strong>Employee Salary: </strong> {firstName} {lastName}
                     <br/><br/>
                     <Grid container spacing={1} xs={12}>
                         <Grid item xs={4}>

@@ -18,15 +18,15 @@ namespace UnitTestBenefitDeduction
         [Test]
         public void GetEmployeeSalaryPositive() {
 
-            IEmployeeRepository EmployeeRepos = new EmployeeRepository();
+            IEmployeeRepository EmployeeRepos = new EmployeeRepository(null, null); //TO DO: Fix Unit Test later
 
             IEmployee AEmployee = EmployeeRepos.GetEmployeeById(1);
 
             Assert.IsNotNull(AEmployee);
 
-            ISalaryRepository SalaryEmployeeRepos = new SalaryRepository(AEmployee);
+            ISalaryRepository SalaryEmployeeRepos = new SalaryRepository();
 
-            ISalary AEmployeeSalary = SalaryEmployeeRepos.GetSalary();
+            ISalary AEmployeeSalary = SalaryEmployeeRepos.GetSalary(AEmployee);
 
             Assert.IsNotNull(AEmployeeSalary);
 

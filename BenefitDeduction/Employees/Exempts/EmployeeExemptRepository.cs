@@ -8,6 +8,14 @@ namespace BenefitDeduction.Employees.Exempts
 {
     public class EmployeeExemptRepository : IEmployeeExemptRepository
     {
+        private IFamilyMemberSpouseRepository _EmployeeSpouseRepos;
+        private IFamilyMemberChildRepository _EmployeeChildRepos; 
+
+        public EmployeeExemptRepository(IFamilyMemberSpouseRepository employeeSpouseRepos, IFamilyMemberChildRepository employeeChildRepos)
+        {
+            _EmployeeSpouseRepos = employeeSpouseRepos;
+            _EmployeeChildRepos = employeeChildRepos;
+        }
         public IEmployee GetEmployeeById(int employeeId)
         {
 
@@ -32,12 +40,9 @@ namespace BenefitDeduction.Employees.Exempts
 
                 var FamilyMemberList = new List<IFamilyMember>();
 
-                var SpouseRepos = new EmployeeSpouseRepository(employee);
-                var ChildrenRepos = new EmployeeChildRepository(employee);
+                FamilyMemberList.AddRange(_EmployeeSpouseRepos.GetFamilyMembers(employee));
 
-                FamilyMemberList.AddRange(SpouseRepos.GetFamilyMembers());
-
-                FamilyMemberList.AddRange(ChildrenRepos.GetFamilyMembers());
+                FamilyMemberList.AddRange(_EmployeeChildRepos.GetFamilyMembers(employee));
 
                 return FamilyMemberList;
              

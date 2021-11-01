@@ -14,16 +14,22 @@ namespace BenefitDeductionAPI.Controllers
     [ApiController]
     public class SalariesController : ControllerBase
     {
+        private IEmployeeRepository _EmployeeRepos;
+        private ISalaryRepository _SalaryEmployeeRepos;
+
+        public SalariesController(IEmployeeRepository employeeRepos, ISalaryRepository salaryEmployeeRepos)
+        {
+            _EmployeeRepos = employeeRepos;
+            _SalaryEmployeeRepos = salaryEmployeeRepos;
+        }
 
         [HttpGet("{employeeId}")]
         public ActionResult<SalaryDto> Get(int employeeId)
         {
-            IEmployeeRepository EmployeeRepos = new EmployeeRepository();
 
-            IEmployee AEmployee = EmployeeRepos.GetEmployeeById(employeeId);
-            ISalaryRepository SalaryEmployeeRepos = new SalaryRepository(AEmployee);
+            IEmployee AEmployee = _EmployeeRepos.GetEmployeeById(employeeId);
 
-            ISalary AEmployeeSalary = SalaryEmployeeRepos.GetSalary();
+            ISalary AEmployeeSalary = _SalaryEmployeeRepos.GetSalary(AEmployee);
 
             var ASalaryDto = Util.Converters.SalaryConverter.Convert(AEmployeeSalary);
 

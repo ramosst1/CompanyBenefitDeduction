@@ -13,15 +13,18 @@ namespace BenefitDeductionAPI.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
+        private IEmployeeRepository _EmployeeRepos;
 
+        public EmployeesController(IEmployeeRepository employeeRepos)
+        {
+            _EmployeeRepos = employeeRepos;
+        }
 
         // GET: api/Employees/5
         [HttpGet]
         public ActionResult<List <EmployeeDto>> Get()
         {
-            IEmployeeRepository EmployeeRepos = new EmployeeRepository();
-
-            var Employees = EmployeeRepos.GetEmployees();
+            var Employees = _EmployeeRepos.GetEmployees();
 
             var EmployeeDto = Util.Converters.EmployeeConverter.Convert(Employees);
 
@@ -32,9 +35,8 @@ namespace BenefitDeductionAPI.Controllers
         [HttpGet("{employeeId}")]
         public ActionResult<EmployeeDto> Get(int employeeId)
         {
-            IEmployeeRepository EmployeeRepos = new EmployeeRepository();
 
-            var Employee = EmployeeRepos.GetEmployeeById(employeeId);
+            var Employee = _EmployeeRepos.GetEmployeeById(employeeId);
 
             var EmployeeDto = Util.Converters.EmployeeConverter.Convert(Employee);
 

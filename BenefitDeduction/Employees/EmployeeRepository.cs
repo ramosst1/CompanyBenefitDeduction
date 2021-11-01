@@ -9,13 +9,23 @@ namespace BenefitDeduction.Employees
 {
     public class EmployeeRepository : IEmployeeRepository
     {
+
+        private IFamilyMemberSpouseRepository _EmployeeSpouseRepos;
+        private IFamilyMemberChildRepository _EmployeeChildRepos; 
+        public EmployeeRepository(IFamilyMemberSpouseRepository employeeSpouseRepos, IFamilyMemberChildRepository employeeChildRepos)
+        {
+            _EmployeeSpouseRepos = employeeSpouseRepos;
+            _EmployeeChildRepos = employeeChildRepos;
+            
+        }
+
         public IEmployee GetEmployeeById(int employeeId)
         {
 
             try
             {
 
-                IEmployeeRepository AEmployeeRepository = new EmployeeExemptRepository();
+                IEmployeeRepository AEmployeeRepository = new EmployeeExemptRepository(_EmployeeSpouseRepos, _EmployeeChildRepos);
 
                 return AEmployeeRepository.GetEmployeeById(employeeId);
             }
@@ -33,12 +43,9 @@ namespace BenefitDeduction.Employees
 
                 var FamilyMemberList = new List<IFamilyMember>();
 
-                var SpouseRepos = new EmployeeSpouseRepository(employee);
-                var ChildrenRepos = new EmployeeChildRepository(employee);
+                FamilyMemberList.AddRange(_EmployeeSpouseRepos.GetFamilyMembers(employee));
 
-                FamilyMemberList.AddRange(SpouseRepos.GetFamilyMembers());
-
-                FamilyMemberList.AddRange(ChildrenRepos.GetFamilyMembers());
+                FamilyMemberList.AddRange(_EmployeeChildRepos.GetFamilyMembers(employee));
 
                 return FamilyMemberList;
              

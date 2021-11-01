@@ -15,28 +15,15 @@ const GlobalUserExperience = {
 
 class BenefitDeductionDetail extends Component {
 
-
-
        constructor(props) {
         super(props);
 
-        let firstName = this.props.employee != null? this.props.employee.firstName : "";
-        let lastName = this.props.employee ? this.props.employee.lastName : ""
-        let selectedEmployeeId = 0;
-
-
-        if (this.props.employee) {
-            firstName = this.props.employee.firstName;
-            lastName = this.props.employee.lastName;
-            selectedEmployeeId = this.props.employee.employeeId;
-        }
-
 
         this.state = {
-            uxFirstName: firstName,
-            uxLastName: lastName,
+            uxFirstName: this.props?.employee?.firstName ?? '',
+            uxLastName: this.props?.employee?.lastName ?? '',
             employee: null,
-            selectedEmployeeId: selectedEmployeeId,
+            selectedEmployeeId: this.props?.employee?.employeeId ?? 0,
             benefitDeduction: null,
             annualTotalCostGross: .00,
             annualTotalCostNet: .00,
@@ -60,10 +47,11 @@ class BenefitDeductionDetail extends Component {
 
 	render() {
 
+        const { firstName, lastName } = this.props.employee;
 
         return (
             <Grid className="root" xs={12} style={{ borderRadius: "15px" }}>
-                <strong>Employee</strong> {this.props.employee.firstName} {this.props.employee.lastName}
+                <strong>Employee</strong> {firstName} {lastName}
                 <br/><br/>
                 <ExpansionPanel expanded={GlobalUserExperience.FamilyMembersExpandDetail}
                     onClick={() => this.handleExpandDetailSection('FamilyMembers')}

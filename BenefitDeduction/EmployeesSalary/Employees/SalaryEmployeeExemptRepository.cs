@@ -9,22 +9,19 @@ namespace BenefitDeduction.EmployeesSalary.Employees
     public class SalaryEmployeeExemptRepository : ISalaryEmployeeExemptRepository
     {
 
-        IEmployee _Employee;
-
         private static decimal SalaryIncrementor = 30000.00m;
         private static List<ISalaryEmployeeExempt> SalaryList = new List<ISalaryEmployeeExempt>();
 
         public SalaryEmployeeExemptRepository(IEmployee employee)
         {
-            _Employee = employee;
         }
 
-        public ISalary GetSalary()
+        public ISalary GetSalary(IEmployee employee)
         {
             try
             {
-                return GetSalaries(_Employee)
-                    .Where(aItem => aItem.EmployeeId == _Employee.EmployeeId).FirstOrDefault();
+                return GetSalaries(employee)
+                    .Where(aItem => aItem.EmployeeId == employee.EmployeeId).FirstOrDefault();
 
             }
             catch (Exception e)

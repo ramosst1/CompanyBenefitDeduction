@@ -9,33 +9,24 @@ namespace BenefitDeduction.EmployeeBenefitDeduction
     public class BenefitDeductionRepository : IBenefitDeductionRepository
     {
 
-        IEmployee _Employee;
-        List<IFamilyMember> _FamilyMembers;
-        ISalary _Salary;
+        private IDeductionEmployeeRepository _DeductionEmployeeRepos;
+        public BenefitDeductionRepository(IDeductionEmployeeRepository deductionEmployeeRepos)
+        {
+            _DeductionEmployeeRepos = deductionEmployeeRepos;
+        }
 
-        public BenefitDeductionRepository(
+        public IBenefitDeductionDetail CalculateBenefitDeductionDetail(
             IEmployee employee, 
             List<IFamilyMember> familyMembers,
             ISalary salary
-            
-        )
-        {
-            _Employee = employee;
-            _FamilyMembers = familyMembers;
-            _Salary = salary;
 
-        }
+        ) {
 
-        public IBenefitDeductionDetail CalculateBenefitDeductionDetail() {
+            IBenefitDeductionDetail ABenefitDeductionDetail = null; 
 
-
-            IBenefitDeductionRepository ABenefitDeductionRepos = null;
-
-            if (_Employee.IsExempt) {
-                ABenefitDeductionRepos = new DeductionEmployeeRepository(_Employee, _FamilyMembers, _Salary);
+            if(employee.IsExempt) {
+                ABenefitDeductionDetail = _DeductionEmployeeRepos.CalculateBenefitDeductionDetail(employee, familyMembers, salary);
             }
-
-            var ABenefitDeductionDetail = ABenefitDeductionRepos?.CalculateBenefitDeductionDetail();
 
             return ABenefitDeductionDetail;
         }

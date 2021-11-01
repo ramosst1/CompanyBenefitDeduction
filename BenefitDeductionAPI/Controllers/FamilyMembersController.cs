@@ -13,14 +13,21 @@ namespace BenefitDeductionAPI.Controllers
     [ApiController]
     public class FamilyMembersController : ControllerBase
     {
+
+        IEmployeeRepository _EmployeeRepos;
+
+        public FamilyMembersController(IEmployeeRepository employeeRepos)
+        {
+            _EmployeeRepos = employeeRepos;
+        }
+
         [HttpGet("EmployeeFamilyMembers/{employeeId}")]
         public ActionResult <List<FamilyMemberDto>> GetEmployeeFamilyMembers(int employeeId)
         {
-            IEmployeeRepository EmployeeRepos = new EmployeeRepository();
 
-            var Employee = EmployeeRepos.GetEmployeeById(employeeId);
+            var Employee = _EmployeeRepos.GetEmployeeById(employeeId);
 
-            var FamilyMembers = EmployeeRepos.GetFamilyMembers(Employee);
+            var FamilyMembers = _EmployeeRepos.GetFamilyMembers(Employee);
 
             var FamilyMemberDtos = Util.Converters.FamiliyMemberConverter.Convert(FamilyMembers);
 

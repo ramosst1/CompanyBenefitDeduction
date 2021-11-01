@@ -11,7 +11,7 @@ class FamilyMembers extends Component {
 
         super(props);
         this.state = {
-            employee: this.props.employee,
+            employee: this.props?.employee,
             familyMembers: []
         };
 
@@ -21,9 +21,12 @@ class FamilyMembers extends Component {
     }
 
     render() {
+
+        const { firstName, lastName } = this.props.employee;
+
         return (
             <div className="root" style={{ borderRadius: " 15px 15px 15px 15px"}}>
-                <strong>Employee Family Members:</strong> {this.props.employee.firstName} {this.props.employee.lastName}
+                <strong>Employee Family Members:</strong> {firstName} {lastName}
                 <br/><br/>
 
 

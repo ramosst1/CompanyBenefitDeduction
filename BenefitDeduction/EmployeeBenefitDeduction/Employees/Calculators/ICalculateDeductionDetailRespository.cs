@@ -1,7 +1,10 @@
-﻿namespace BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators
+﻿using BenefitDeduction.EmployeesSalary;
+using System.Collections.Generic;
+
+namespace BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators
 {
-    internal interface ICalculateDeductionDetailRespository
+    public interface ICalculateDeductionDetailRespository
     {
-        IBenefitDeductionDetail CalculateDeductionDetail();
+        IBenefitDeductionDetail CalculateDeductionDetail(ISalary salary, List<IBenefitDeductionItem> benefitDeductionItems);
     }
 }

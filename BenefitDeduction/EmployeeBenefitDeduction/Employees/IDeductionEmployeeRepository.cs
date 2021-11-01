@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BenefitDeduction.EmployeeBenefitDeduction.Employees
 {
-    interface IDeductionEmployeeRepository: IBenefitDeductionRepository
+    public interface IDeductionEmployeeRepository: IBenefitDeductionRepository
     {
     }
 }

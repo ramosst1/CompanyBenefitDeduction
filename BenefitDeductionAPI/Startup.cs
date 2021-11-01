@@ -25,6 +25,20 @@ namespace BenefitDeductionAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            #region"Data Managers Dependency Injections" 
+            services.AddScoped<BenefitDeduction.Employees.IEmployeeRepository,BenefitDeduction.Employees.EmployeeRepository > ();
+            services.AddScoped<BenefitDeduction.Employees.FamilyMembers.IFamilyMemberSpouseRepository, BenefitDeduction.Employees.FamilyMembers.EmployeeSpouseRepository> ();
+            services.AddScoped<BenefitDeduction.Employees.FamilyMembers.IFamilyMemberChildRepository, BenefitDeduction.Employees.FamilyMembers.EmployeeChildRepository> ();
+            services.AddScoped<BenefitDeduction.EmployeesSalary.ISalaryRepository,BenefitDeduction.EmployeesSalary.SalaryRepository > ();
+            services.AddScoped<BenefitDeduction.EmployeeBenefitDeduction.IBenefitDeductionRepository,BenefitDeduction.EmployeeBenefitDeduction.BenefitDeductionRepository > ();
+            services.AddScoped<BenefitDeduction.EmployeeBenefitDeduction.Employees.IDeductionEmployeeRepository,BenefitDeduction.EmployeeBenefitDeduction.Employees.DeductionEmployeeRepository> ();
+            services.AddScoped<BenefitDeduction.EmployeeBenefitDeduction.Employees.IDeductionEmployeeRepository, BenefitDeduction.EmployeeBenefitDeduction.Employees.DeductionEmployeeRepository >();
+            services.AddScoped<BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators.ICalculateDeductionItemsRespository, BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators.CalculateDeductionItemsRespository> ();
+            services.AddScoped<BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators.ICalculateDeductionDetailRespository, BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators.CalculateDeductionDetailRespository> ();
+
+            #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

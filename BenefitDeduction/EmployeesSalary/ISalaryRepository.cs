@@ -1,7 +1,9 @@
-﻿namespace BenefitDeduction.EmployeesSalary
+﻿using BenefitDeduction.Employees;
+
+namespace BenefitDeduction.EmployeesSalary
 {
     public interface ISalaryRepository
     {
-        ISalary GetSalary();
+        ISalary GetSalary(IEmployee employee);
     }
 }

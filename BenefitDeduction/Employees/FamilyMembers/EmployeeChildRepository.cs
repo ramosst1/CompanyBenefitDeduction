@@ -5,18 +5,14 @@ using System.Linq;
 
 namespace BenefitDeduction.Employees.FamilyMembers
 {
-    internal class EmployeeChildRepository: IFamilyMemberRepository
+    public class EmployeeChildRepository: IFamilyMemberChildRepository
     {
 
-        private IEmployee _Employee;
-
-        internal EmployeeChildRepository(IEmployee employee)
+        public EmployeeChildRepository()
         {
-            _Employee = employee;
-
         }
 
-        public List<IFamilyMember> GetFamilyMembers()
+        public List<IFamilyMember> GetFamilyMembers(IEmployee employee)
         {
 
             try {
@@ -77,7 +73,7 @@ namespace BenefitDeduction.Employees.FamilyMembers
                     }
                 );
 
-                return FamilyMemberList.Where(aItem => aItem.EmployeeId == _Employee.EmployeeId).ToList();
+                return FamilyMemberList.Where(aItem => aItem.EmployeeId == employee.EmployeeId).ToList();
 
 
             } catch (Exception e) {

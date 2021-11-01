@@ -14,7 +14,7 @@ namespace Tests
         [Test]
         public void GetEmployeesWithFamilyPositive()
         {
-            IEmployeeRepository EmployeeRepos = new EmployeeRepository();
+            IEmployeeRepository EmployeeRepos = new EmployeeRepository(null,null); //TO DO: Fix Unit Test later
 
             var Employee = EmployeeRepos.GetEmployeeById(1);
             Assert.IsNotNull(Employee);
@@ -33,7 +33,7 @@ namespace Tests
         [Test]
         public void GetEmployeesWithFamilyNegative()
         {
-            IEmployeeRepository EmployeeRepos = new EmployeeRepository();
+            IEmployeeRepository EmployeeRepos = new EmployeeRepository(null, null); //TO DO: Fix Unit Test later
 
             var Employee = EmployeeRepos.GetEmployeeById(2);
 
@@ -56,7 +56,7 @@ namespace Tests
         [Test]
         public void GetEmployeesWithSpouseOnlyPositive()
         {
-            IEmployeeRepository EmployeeRepos = new EmployeeRepository();
+            IEmployeeRepository EmployeeRepos = new EmployeeRepository(null, null); //TO DO: Fix Unit Test later
 
             var Employee = EmployeeRepos.GetEmployeeById(3);
             Assert.IsNotNull(Employee);
@@ -74,7 +74,7 @@ namespace Tests
         [Test]
         public void GetEmployeesWithSpouseOnlyNegative()
         {
-            IEmployeeRepository EmployeeRepos = new EmployeeRepository();
+            IEmployeeRepository EmployeeRepos = new EmployeeRepository(null, null); //TO DO: Fix Unit Test later
 
             var Employee = EmployeeRepos.GetEmployeeById(2);
             Assert.IsNotNull(Employee);
@@ -93,7 +93,7 @@ namespace Tests
         [Test]
         public void GetEmployeesWithChildrenOnlyPositive()
         {
-            IEmployeeRepository EmployeeRepos = new EmployeeRepository();
+            IEmployeeRepository EmployeeRepos = new EmployeeRepository(null, null); //TO DO: Fix Unit Test later
 
             var Employee = EmployeeRepos.GetEmployeeById(4);
             Assert.IsNotNull(Employee);
@@ -111,7 +111,7 @@ namespace Tests
         [Test]
         public void GetEmployeesWithChildrenOnlyNegative()
         {
-            IEmployeeRepository EmployeeRepos = new EmployeeRepository();
+            IEmployeeRepository EmployeeRepos = new EmployeeRepository(null, null); //TO DO: Fix Unit Test later
 
             var Employee = EmployeeRepos.GetEmployeeById(2);
             Assert.IsNotNull(Employee);

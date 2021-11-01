@@ -16,25 +16,34 @@ namespace BenefitDeductionAPI.Controllers
     [ApiController]
     public class BenefitDeductionsController : ControllerBase
     {
+        
+        private IEmployeeRepository _EmployeeRepos;
+        private ISalaryRepository _SalaryEmployeeRepos;
+        private IBenefitDeductionRepository _BenefitDeductionRepos;
+
+        public BenefitDeductionsController(
+            IEmployeeRepository employeeRepos, 
+            ISalaryRepository salaryEmployeeRepos,
+            IBenefitDeductionRepository benefitDeductionRepos            
+        )
+        {
+            _EmployeeRepos = employeeRepos;    
+            _SalaryEmployeeRepos = salaryEmployeeRepos;
+            _BenefitDeductionRepos = benefitDeductionRepos;
+        }
 
         [HttpGet("{employeeId}")]
         public ActionResult<BenefitDeductionDetailDto> Get(int employeeId)
         {
-            IEmployeeRepository EmployeeRepos = new EmployeeRepository();
 
-            var AEmployee = EmployeeRepos.GetEmployeeById(employeeId);
+            var AEmployee = _EmployeeRepos.GetEmployeeById(employeeId);
 
-            List<IFamilyMember> FamilyMembers = EmployeeRepos.GetFamilyMembers(AEmployee);
+            List<IFamilyMember> FamilyMembers = _EmployeeRepos.GetFamilyMembers(AEmployee);
 
-            ISalaryRepository SalaryEmployeeRepos = new SalaryRepository(AEmployee);
-
-            ISalary AEmployeeSalary = SalaryEmployeeRepos.GetSalary();
-
-            IBenefitDeductionRepository BenefitDeductionRepos =
-                new BenefitDeductionRepository(AEmployee, FamilyMembers, AEmployeeSalary);
+            ISalary AEmployeeSalary = _SalaryEmployeeRepos.GetSalary(AEmployee);
 
             IBenefitDeductionDetail ABenefitDeductionDetail =
-                BenefitDeductionRepos.CalculateBenefitDeductionDetail();
+                _BenefitDeductionRepos.CalculateBenefitDeductionDetail(AEmployee, FamilyMembers, AEmployeeSalary);
 
 
             var ABenefitDeductionDetailDto = Util.Converters.

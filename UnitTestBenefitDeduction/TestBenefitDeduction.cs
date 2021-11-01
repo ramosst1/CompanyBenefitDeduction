@@ -22,7 +22,7 @@ namespace UnitTestBenefitDeduction
         public void GetBenefitDeductionsPositive()
         {
 
-            IEmployeeRepository EmployeeRepos = new EmployeeRepository();
+            IEmployeeRepository EmployeeRepos = new EmployeeRepository(null, null); //TO DO: Fix Unit test later.
 
             var AEmployee = EmployeeRepos.GetEmployeeById(1);
             Assert.IsNotNull(AEmployee);
@@ -30,17 +30,17 @@ namespace UnitTestBenefitDeduction
             List <IFamilyMember> FamilyMembers = EmployeeRepos.GetFamilyMembers(AEmployee);
             Assert.IsNotNull(FamilyMembers);
 
-            ISalaryRepository SalaryEmployeeRepos = new SalaryRepository(AEmployee);
+            ISalaryRepository SalaryEmployeeRepos = new SalaryRepository();
 
-            ISalary AEmployeeSalary = SalaryEmployeeRepos.GetSalary();
+            ISalary AEmployeeSalary = SalaryEmployeeRepos.GetSalary(AEmployee);
 
             Assert.IsNotNull(AEmployeeSalary);
 
             IBenefitDeductionRepository BenefitDeductionRepos =
-                new BenefitDeductionRepository(AEmployee, FamilyMembers, AEmployeeSalary);
+                new BenefitDeductionRepository(null); // Create a Mock Repository later.
 
             IBenefitDeductionDetail ABenefitDeductionDetail =  
-                BenefitDeductionRepos.CalculateBenefitDeductionDetail();
+                BenefitDeductionRepos.CalculateBenefitDeductionDetail(AEmployee, FamilyMembers, AEmployeeSalary);
 
             Assert.IsNotNull(ABenefitDeductionDetail);
 
