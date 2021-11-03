@@ -1,9 +1,8 @@
 ﻿using BenefitDeduction.Employees;
 using BenefitDeduction.EmployeesSalary;
+using BenefitDeduction.EmployeesSalary.Employees;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Moq;
 
 namespace UnitTestBenefitDeduction
 {
@@ -16,21 +15,32 @@ namespace UnitTestBenefitDeduction
         }
 
         [Test]
-        public void GetEmployeeSalaryPositive() {
+        public void GetEmployeeSalary() {
 
-            IEmployeeRepository EmployeeRepos = new EmployeeRepository(null, null); //TO DO: Fix Unit Test later
+            var Employee = MockGetEmployee();
 
-            IEmployee AEmployee = EmployeeRepos.GetEmployeeById(1);
+            ISalaryEmployeeExemptRepository SalaryEmployeeExemptRepos = new SalaryEmployeeExemptRepository(Employee.Object); 
 
-            Assert.IsNotNull(AEmployee);
+            ISalaryRepository SalaryEmployeeRepos = new SalaryRepository(SalaryEmployeeExemptRepos);
 
-            ISalaryRepository SalaryEmployeeRepos = new SalaryRepository();
-
-            ISalary AEmployeeSalary = SalaryEmployeeRepos.GetSalary(AEmployee);
+            ISalary AEmployeeSalary = SalaryEmployeeRepos.GetSalary(Employee.Object);
 
             Assert.IsNotNull(AEmployeeSalary);
 
         }
+
+        private Mock<IEmployee> MockGetEmployee() {
+
+            var AEmployee = new Mock<IEmployee>().SetupAllProperties();
+            AEmployee.SetupGet(x => x.EmployeeId).Returns(1);
+
+            AEmployee.Object.FirstName  = "John";
+            AEmployee.Object.LastName = "Smith";
+            AEmployee.SetupGet(x => x.IsExempt).Returns(true);
+
+            return AEmployee;
+        }
+
 
         /// Do some other testing.
 

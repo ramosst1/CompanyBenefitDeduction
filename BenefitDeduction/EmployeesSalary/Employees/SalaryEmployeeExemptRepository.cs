@@ -8,6 +8,10 @@ namespace BenefitDeduction.EmployeesSalary.Employees
 {
     public class SalaryEmployeeExemptRepository : ISalaryEmployeeExemptRepository
     {
+        public SalaryEmployeeExemptRepository()
+        {
+            
+        }
 
         private static decimal SalaryIncrementor = 30000.00m;
         private static List<ISalaryEmployeeExempt> SalaryList = new List<ISalaryEmployeeExempt>();

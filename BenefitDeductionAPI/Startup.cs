@@ -30,10 +30,13 @@ namespace BenefitDeductionAPI
             services.AddScoped<BenefitDeduction.Employees.IEmployeeRepository,BenefitDeduction.Employees.EmployeeRepository > ();
             services.AddScoped<BenefitDeduction.Employees.FamilyMembers.IFamilyMemberSpouseRepository, BenefitDeduction.Employees.FamilyMembers.EmployeeSpouseRepository> ();
             services.AddScoped<BenefitDeduction.Employees.FamilyMembers.IFamilyMemberChildRepository, BenefitDeduction.Employees.FamilyMembers.EmployeeChildRepository> ();
+            services.AddScoped<BenefitDeduction.Employees.Exempts.IEmployeeExemptRepository, BenefitDeduction.Employees.Exempts.EmployeeExemptRepository >();
+
             services.AddScoped<BenefitDeduction.EmployeesSalary.ISalaryRepository,BenefitDeduction.EmployeesSalary.SalaryRepository > ();
+            services.AddScoped<BenefitDeduction.EmployeesSalary.Employees.ISalaryEmployeeExemptRepository,BenefitDeduction.EmployeesSalary.Employees.SalaryEmployeeExemptRepository> ();
+
             services.AddScoped<BenefitDeduction.EmployeeBenefitDeduction.IBenefitDeductionRepository,BenefitDeduction.EmployeeBenefitDeduction.BenefitDeductionRepository > ();
             services.AddScoped<BenefitDeduction.EmployeeBenefitDeduction.Employees.IDeductionEmployeeRepository,BenefitDeduction.EmployeeBenefitDeduction.Employees.DeductionEmployeeRepository> ();
-            services.AddScoped<BenefitDeduction.EmployeeBenefitDeduction.Employees.IDeductionEmployeeRepository, BenefitDeduction.EmployeeBenefitDeduction.Employees.DeductionEmployeeRepository >();
             services.AddScoped<BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators.ICalculateDeductionItemsRespository, BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators.CalculateDeductionItemsRespository> ();
             services.AddScoped<BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators.ICalculateDeductionDetailRespository, BenefitDeduction.EmployeeBenefitDeduction.Employees.Calculators.CalculateDeductionDetailRespository> ();
 

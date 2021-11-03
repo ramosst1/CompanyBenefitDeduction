@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using BenefitDeduction.Employees.FamilyMembers;
-using System.Linq;
 using BenefitDeduction.Employees.Exempts;
 
 namespace BenefitDeduction.Employees
@@ -12,10 +10,16 @@ namespace BenefitDeduction.Employees
 
         private IFamilyMemberSpouseRepository _EmployeeSpouseRepos;
         private IFamilyMemberChildRepository _EmployeeChildRepos; 
-        public EmployeeRepository(IFamilyMemberSpouseRepository employeeSpouseRepos, IFamilyMemberChildRepository employeeChildRepos)
+        private IEmployeeExemptRepository _EmployeeExemptRepos;
+        public EmployeeRepository(
+            IFamilyMemberSpouseRepository employeeSpouseRepos, 
+            IFamilyMemberChildRepository employeeChildRepos,
+            IEmployeeExemptRepository employeeExemptRepos
+        )
         {
             _EmployeeSpouseRepos = employeeSpouseRepos;
             _EmployeeChildRepos = employeeChildRepos;
+            _EmployeeExemptRepos = employeeExemptRepos;
             
         }
 
@@ -25,9 +29,7 @@ namespace BenefitDeduction.Employees
             try
             {
 
-                IEmployeeRepository AEmployeeRepository = new EmployeeExemptRepository(_EmployeeSpouseRepos, _EmployeeChildRepos);
-
-                return AEmployeeRepository.GetEmployeeById(employeeId);
+                return _EmployeeExemptRepos.GetEmployeeById(employeeId);
             }
             catch (Exception e) {
 
